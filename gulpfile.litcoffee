@@ -30,8 +30,8 @@ Preparations
     coffeelint = require 'gulp-coffeelint'
     uglify = require 'gulp-uglify'
 
-Out of the box tasks
---------------------
+Mini tasks
+----------
 
     gulp.task 'clean-project', ->
       gulp
@@ -49,10 +49,6 @@ Out of the box tasks
 
 ---
 
-    gulp.task 'clean', (cb) ->      
-      runSequence "clean-project", "clean-test", cb
----      
-
     gulp.task 'lint-project-coffee', ->    
       gulp
         .src projectCoffeeSource
@@ -66,16 +62,6 @@ Out of the box tasks
         .src testCoffeeSource
         .pipe coffeelint()
         .pipe coffeelint.reporter()
-
----
-
-    gulp.task 'lint-coffee', (cb) ->
-      runSequence 'lint-project-coffee', 'lint-test-coffee', cb
-
----
-
-    gulp.task 'lint', (cb) ->
-      runSequence 'lint-coffee', cb
 
 ---
 
@@ -95,26 +81,11 @@ Out of the box tasks
 
 ---
   
-    gulp.task 'compile-coffee', (cb) ->
-      runSequence 'compile-project-coffee', 'compile-test-coffee', cb
-
----
-    
-    gulp.task 'compile', (cb) ->
-      runSequence 'compile-coffee', cb
-
----
-  
     gulp.task 'build-project-coffee', ->
       gulp
         .src "#{projectBuildDest}/**/*.js"
         .pipe uglify()
         .pipe gulp.dest projectDistDest
-
----
-
-    gulp.task 'build', (cb) ->
-      runSequence 'compile', 'build-project-coffee', cb
 
 ---
 
@@ -126,7 +97,40 @@ Out of the box tasks
                   globals: 
                     should: require 'should'
 
+Umbrella tasks
+--------------
+
+    gulp.task 'clean', (cb) ->      
+      runSequence "clean-project", "clean-test", cb
+
+---      
+
+    gulp.task 'lint-coffee', (cb) ->
+      runSequence 'lint-project-coffee', 'lint-test-coffee', cb
+
 ---
+
+    gulp.task 'lint', (cb) ->
+      runSequence 'lint-coffee', cb
+
+---
+
+    gulp.task 'compile-coffee', (cb) ->
+      runSequence 'compile-project-coffee', 'compile-test-coffee', cb
+
+---
+    
+    gulp.task 'compile', (cb) ->
+      runSequence 'compile-coffee', cb
+
+---
+
+    gulp.task 'build', (cb) ->
+      runSequence 'compile', 'build-project-coffee', cb
+
+
+Default task
+------------
 
     gulp.task 'default', (cb) ->
       runSequence 'clean', 'build', 'test', cb
