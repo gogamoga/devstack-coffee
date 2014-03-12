@@ -49,8 +49,8 @@ Out of the box tasks
 
 ---
 
-    gulp.task 'clean', ["clean-project", "clean-test"], ->      
-
+    gulp.task 'clean', (cb) ->      
+      runSequence "clean-project", "clean-test", cb
 ---      
 
     gulp.task 'lint-project-coffee', ->    
@@ -69,11 +69,13 @@ Out of the box tasks
 
 ---
 
-    gulp.task 'lint-coffee', ['lint-project-coffee', 'lint-test-coffee' ], ->
+    gulp.task 'lint-coffee', (cb) ->
+      runSequence 'lint-project-coffee', 'lint-test-coffee', cb
 
 ---
 
-    gulp.task 'lint', ['lint-coffee'], ->
+    gulp.task 'lint', (cb) ->
+      runSequence 'lint-coffee', cb
 
 ---
 
@@ -93,16 +95,17 @@ Out of the box tasks
 
 ---
   
-    gulp.task 'compile-coffee',      
-              ['compile-project-coffee', 'compile-test-coffee'], -> 
+    gulp.task 'compile-coffee', (cb) ->
+      runSequence 'compile-project-coffee', 'compile-test-coffee', cb
 
 ---
     
-    gulp.task 'compile', ['compile-coffee'], ->
+    gulp.task 'compile', (cb) ->
+      runSequence 'compile-coffee', cb
 
 ---
   
-    gulp.task 'build-project-coffee', [ 'compile-project-coffee'], ->
+    gulp.task 'build-project-coffee', ->
       gulp
         .src projectBuildDest
         .pipe uglify()
@@ -110,7 +113,8 @@ Out of the box tasks
 
 ---
 
-    gulp.task 'build', ['compile', 'build-project-coffee'], ->      
+    gulp.task 'build', (cb) ->
+      runSequence 'compile', 'build-project-coffee', cb
 
 ---
 
@@ -124,5 +128,5 @@ Out of the box tasks
 
 ---
 
-    gulp.task 'default', ["clean"], (cb) ->
-      runSequence 'build', cb
+    gulp.task 'default', (cb) ->
+      runSequence 'clean', 'build', 'test', cb
