@@ -6,7 +6,7 @@ Minimal Seed project for coffeescript based development
 Install
 -------
 
-```shell    
+```bash    
 project="foobar"
 git clone https://github.com/gogamoga/devstack-coffee.git $project
 cd $project
