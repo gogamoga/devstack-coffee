@@ -17,6 +17,7 @@ Install
   
   echo > README.md    
   mkdir -p src/test    
+  
   git add .
   git commit -a -m "Initial commit"    
   git checkout -b work
