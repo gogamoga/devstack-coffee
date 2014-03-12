@@ -1,0 +1,9 @@
+/node_modules/
+/bower_components/
+/test/
+/dist/
+/build/
+/.idea/
+/.cram/
+npm-debug.log
+gulpfile.coffee

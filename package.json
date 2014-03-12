@@ -1,0 +1,20 @@
+{
+  "name": "devstack-coffee-minimal",
+  "scripts": {    
+    "test": "gulp test",
+    "compile": "gulp compile",
+    "build": "gulp build"        
+  },
+  "repository": {
+  },
+  "keywords": [
+    "coffeescript"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "gulp": "~3.5.5",
+    "gulp-util": "~2.2.14",
+    "gulp-rimraf": "0.0.9"
+  }
+}
