@@ -107,7 +107,7 @@ Out of the box tasks
   
     gulp.task 'build-project-coffee', ->
       gulp
-        .src projectBuildDest
+        .src "#{projectBuildDest}/**/*.js"
         .pipe uglify()
         .pipe gulp.dest projectDistDest
 
