@@ -1,7 +1,7 @@
 Gogamatic Minimal Devstack
 ==========================
 
-Minimal Seed project for coffeescript based development
+#### Minimal Seed project for coffeescript based development
 
 Install
 -------
