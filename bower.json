@@ -1,0 +1,22 @@
+{
+  "name": "devstack-coffee",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gogamoga/devstack-coffee",
+  "authors": [
+    "gogamoga <gogamoga@gmail.com>"
+  ],
+  "description": "Seed project for coffeescript based development",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "curl": "~0.8.9"
+  }
+}
