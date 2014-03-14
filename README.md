@@ -1,5 +1,5 @@
-Gogamatic Minimal Devstack
-==========================
+Gogamatic Devstack with Curl and Cram
+=====================================
 
 #### Minimal Seed project for coffeescript based development
 
@@ -11,7 +11,7 @@ Install
   git clone https://github.com/gogamoga/devstack-coffee.git $project
   
   cd $project
-  git checkout minimal    
+  git checkout withcurl    
   rm -rf .git
   git init
   
